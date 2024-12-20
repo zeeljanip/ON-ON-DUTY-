@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome Admin</title>
+    <style>
+        /* Global styles */
+        body {
+            font-family: 'Segoe UI', Roboto, Arial, sans-serif;
+            background-color: #f7f7f7;
+            margin: 0;
+            padding: 20px;
+            display: grid;
+            place-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            max-width: 800px;
+            width: 100%;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            background-color: #ffffff;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .header h1 {
+            color: #ac2525;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .content {
+            text-align: center;
+        }
+
+        .content .card {
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .content .card h2 {
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: #ac2525;
+        }
+
+        .content .card p {
+            font-size: 16px;
+            margin-bottom: 8px;
+        }
+
+        .button {
+            background-color: #151717;
+            color: #ffffff;
+            border: none;
+            border-radius: 8px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out;
+            margin-top: 20px;
+            display: block;
+            margin: 0 auto;
+            width: fit-content;
+        }
+
+        .button:hover {
+            background-color: #c94040;
+        }
+
+        #noRequestsMessage {
+            margin-bottom: 20px;
+            /* Add margin bottom for spacing */
+            text-align: center;
+            color: #ac2525;
+            display: none;
+            /* Initially hide the message */
+        }
+
+        /* Add styles for approval options and approval message */
+        .approval-options {
+            margin-top: 10px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .button.approve-button,
+        .button.deny-button {
+            margin-right: 10px;
+        }
+
+        .approval-message {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        .approval-message.approved {
+            color: green;
+        }
+
+        .approval-message.denied {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Welcome Admin</h1>
+            <!-- Add any admin-specific header content here -->
+        </div>
+        <div class="content" id="contentContainer">
+            <!-- JavaScript code will dynamically add cards here -->
+
+            <div id="noRequestsMessage" style="display: none; text-align: center; color: #ac2525;">
+                No OD Request has been made!
+            </div>
+        </div>
+        <button id="logoutButton" class="button">Logout</button>
+    </div>
+
+    <script>
+        // JavaScript code for admin-specific functionalities (if any)
+        const logoutButton = document.getElementById('logoutButton');
+        logoutButton.addEventListener('click', () => {
+            // Clear localStorage
+            localStorage.removeItem('submittedEnrollments');
+
+            // Perform logout actions here (e.g., redirect to login page)
+            window.location.href = 'HOMEPAGE.html'; // Assuming 'login.html' is your login page
+        });
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const submittedEnrollments = JSON.parse(localStorage.getItem('submittedEnrollments'));
+
+            if (!submittedEnrollments || submittedEnrollments.length === 0) {
+                // Show the message when no cards are displayed
+                const noRequestsMessage = document.getElementById('noRequestsMessage');
+                noRequestsMessage.style.display = 'block';
+                return; // No data to display
+            }
+
+            const container = document.getElementById('contentContainer');
+
+            submittedEnrollments.forEach(enrollment => {
+                const card = createCard(enrollment);
+                container.appendChild(card);
+            });
+        });
+
+        function createCard(data) {
+            const card = document.createElement('div');
+            card.classList.add('card');
+
+            const heading = document.createElement('h2');
+            heading.textContent = 'Submitted Information:';
+
+            const content = document.createElement('div');
+            content.innerHTML = `
+                <p><strong>Enrollment Number:</strong> ${data.enrollmentNumber}</p>
+                <p><strong>Student Name:</strong> ${data.studentName}</p>
+                <p><strong>Gender:</strong> ${data.gender}</p>
+                <p><strong>Department:</strong> ${data.departmentSelect}</p>
+                <p><strong>Class:</strong> ${data.classSelect}</p>
+                <p><strong>Year:</strong> ${data.yearSelect}</p>
+                <p><strong>Date:</strong> ${data.dateInput}</p>
+                <p><strong>Time:</strong> ${data.timeInput}</p>
+            `;
+
+            // Approval options (Approval for OD/Deny)
+            const approvalOptions = document.createElement('div');
+            approvalOptions.classList.add('approval-options');
+            approvalOptions.innerHTML = `
+                <button class="button approve-button">Approval for OD</button>
+                <button class="button deny-button">Deny</button>
+            `;
+            content.appendChild(approvalOptions);
+
+            const approvalMessage = document.createElement('p');
+            approvalMessage.classList.add('approval-message');
+            content.appendChild(approvalMessage);
+
+            card.appendChild(heading);
+            card.appendChild(content);
+
+            // Add event listeners for approval buttons
+            const approveButton = approvalOptions.querySelector('.approve-button');
+            const denyButton = approvalOptions.querySelector('.deny-button');
+
+            approveButton.addEventListener('click', () => {
+                approvalMessage.textContent = 'Administrator has approved OD';
+                approvalMessage.classList.remove('denied');
+                approvalMessage.classList.add('approved');
+            });
+
+            denyButton.addEventListener('click', () => {
+                approvalMessage.textContent = 'Administrator has denied for OD';
+                approvalMessage.classList.remove('approved');
+                approvalMessage.classList.add('denied');
+            });
+
+            return card;
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome Admin</title>
+<link href="admin.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">
+                <img src="Screenshot-2023-11-03-at-2.51.52-PM.png" alt="Logo">
+            </div>
+            <div class="outer-menu">
+                <!-- Your menu structure here -->
+                <input id="checkboxToggle" class="checkbox-toggle" type="checkbox">
+                <div class="hamburger">
+                    <div></div>
+                </div>
+                <div class="menu">
+                    <div>
+                        <div>
+                            <div class="filter-options">
+                                <!-- Filter options remain unchanged -->
+                                <select id="departmentSelect" multiple>
+                                    <option value="dept1">UID</option>
+                                    <option value="dept2">UIT</option>
+                                    <option value="dept3">UWSL</option>
+                                    <!-- Add more department options as needed -->
+                                </select>
+                                <select id="classSelect" multiple>
+                                    <option value="class1">UIT - B.tech or CSE</option>
+                                    <option value="class2">UID - Departments of fine Arts</option>
+                                    <option value="class3">UID - Departments of Fashion</option>
+                                    <option value="class4">UWSL - BA</option>
+                                    <option value="class5">UWSL - LLB</option>
+                                    <!-- Add more class options as needed -->
+                                </select>
+                                <select id="yearSelect" multiple>
+                                    <option value="year1">Year 1</option>
+                                    <option value="year2">Year 2</option>
+                                    <option value="year3">Year 3</option>
+                                    <option value="year4">Year 4</option>
+                                    <!-- Add more year options as needed -->
+                                </select>
+                                <button id="filterButton" class="button">Apply Filter</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <h1>Welcome Admin</h1>
+        </div>
+        <div class="content" id="contentContainer">
+            <!-- JavaScript code will dynamically add cards here -->
+            <div id="container"></div>
+            <div id="noRequestsMessage">
+                No OD Request has been made!
+            </div>
+        </div>
+        <form id="submitForm" action="welcome_hod.html" method="GET">
+            <div id="container"></div>
+            <button type="submit" id="submitButton" class="button">Submit</button>
+        </form>        
+        <button id="logoutButton" class="button">Logout</button>
+    </div>
+</body>
+
+<script src="admin.js"></script>
+</html>

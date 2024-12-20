@@ -1,0 +1,200 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Segoe UI", Roboto, Arial, sans-serif;
+    background-color: #f7f7f7;
+    margin: 0;
+    padding: 20px;
+    display: grid;
+    place-items: center;
+    height: 100vh;
+}
+
+.container {
+    max-width: 800px;
+    width: 100%;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    background-color: #cc1d1a;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.header h1 {
+    color: #fcb900;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.content {
+    text-align: center;
+}
+
+.content .card {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.content .card h2 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #ac2525;
+}
+
+.content .card p {
+    font-size: 16px;
+    margin-bottom: 8px;
+}
+
+.button {
+    background-color: #151717;
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+    display: block;
+    margin: 0 auto;
+    width: fit-content;
+}
+
+.button:hover {
+    background-color: #fcb900;
+}
+
+#noRequestsMessage {
+    margin-bottom: 20px;
+    text-align: center;
+    color: #fcb900;
+}
+
+.approval-options {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+.approval-message {
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.approval-message.approved {
+    color: green;
+}
+
+.approval-message.denied {
+    color: red;
+}
+
+.flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+a,
+a:visited,
+a:hover,
+a:active {
+    color: inherit;
+    text-decoration: none;
+}
+
+h1 {
+    font-weight: 400;
+    font-size: 3em;
+    text-align: center;
+}
+
+.filter-options {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    background-color: #fefefe;
+    border-radius: 8px;
+    padding: 10px;
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.filter-options select,
+.filter-options button {
+    margin-right: 10px;
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ac2525;
+    background-color: #ffffff;
+    color: #ac2525;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+.filter-options select:hover,
+.filter-options button:hover {
+    background-color: #ac2525;
+    color: #ffffff;
+}
+
+.filter-options button {
+    background-color: #151717;
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.filter-options button:hover {
+    background-color: #fcb900;
+    color: #151717;
+}
+
+.filter-options select option:checked {
+    background-color: #fcb900 !important;
+    color: #151717 !important;
+}
+
+.filter-options input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 4px;
+    border: 1px solid #ac2525;
+    background-color: #ffffff;
+    cursor: pointer;
+}
+
+.filter-options input[type="checkbox"]:checked {
+    background-color: #fcb900;
+    border-color: #fcb900;
+    color: #ffffff;
+}
+
+.filter-options input[type="checkbox"]+label {
+    color: #ac2525;
+    margin-left: 5px;
+}
+
+.filter-options input[type="checkbox"]:checked+label {
+    color: #ffffff;
+}
+
+#logoutButton {
+    margin-top: 20px;
+}

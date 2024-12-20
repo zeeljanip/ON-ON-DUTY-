@@ -1,0 +1,163 @@
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell,
+                'Open Sans', 'Helvetica Neue', sans-serif;
+            background-color: #cc1d1a;
+            margin: 0;
+            display: grid;
+            place-items: center;
+            height: 100vh;
+        }
+
+        .form-group {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            align-items: center;
+        }
+
+        /* Responsive form layout */
+        @media (max-width: 768px) {
+            .form-group {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            background-color: #ffffff;
+            padding: 30px;
+            max-width: 450px;
+            border-radius: 20px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .form button {
+            align-self: flex-end;
+        }
+
+        .inputForm {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border: 1.5px solid #ecedec;
+            border-radius: 10px;
+            height: 50px;
+            padding-left: 9px;
+            transition: border 0.2s ease-in-out;
+        }
+
+        .input {
+            flex: 1;
+            border: none;
+            border-radius: 10px;
+            height: 95%;
+        }
+
+        .input:focus {
+            outline: none;
+        }
+
+        .inputForm:focus-within {
+            border: 1.5px solid #cf2e2e;
+        }
+
+        .flex-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            justify-content: space-between;
+        }
+
+        .span {
+            font-size: 12px;
+            color: #cf2e2e;
+            font-weight: 500;
+            cursor: pointer;
+        }
+
+        .button-submit {
+            background-color: #151717;
+            border: none;
+            color: white;
+            font-size: 15px;
+            font-weight: 500;
+            border-radius: 10px;
+            width: 100%;
+            height: 50px;
+            cursor: pointer;
+        }
+
+        .button-submit:hover {
+            background-color: #cc1d1a;
+        }
+
+        .p {
+            text-align: center;
+            color: black;
+            font-size: 14px;
+            margin: 5px 0;
+        }
+
+        .btn {
+            width: 100%;
+            height: 50px;
+            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: 500;
+            gap: 10px;
+            border: 1px solid #ededef;
+            background-color: white;
+            cursor: pointer;
+            transition: border 0.2s ease-in-out;
+        }
+
+        .btn:hover {
+            border: 1px solid #cf2e2e;
+        }
+
+        .hrl {
+            width: 100%;
+            display: flex;
+        }
+
+        .logo {
+            text-align: center;
+        }
+
+        .logo img {
+            max-width: 70px;
+            height: auto;
+            margin: 0 auto;
+        }
+
+        .role-btn {
+            border: 1px solid #ededef;
+            background-color: white;
+            border-radius: 10px;
+            padding: 8px 16px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+        }
+
+        .role-btn:hover {
+            background-color: #cf2e2e;
+            color: white;
+        }
+
+        .role-btn.active {
+            background-color: #cf2e2e;
+            color: white;
+        }
+
+        .role-selection {
+            margin-left: 7px;
+        }
+
+        .rem {
+            font-size: 13px;
+        }
